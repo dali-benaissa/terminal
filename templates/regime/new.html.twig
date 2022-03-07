@@ -1,0 +1,14 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}
+    Welcome Back
+    {{app.user.firstName ~ ' ' ~ app.user.lastName}}
+
+{% endblock %}
+{% block body %}
+    <h1>Create new Regime</h1>
+
+    {{ include('regime/_form.html.twig') }}
+
+    <a href="{{ path('regime_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}
+Welcome Back
+    {{app.user.firstName ~ ' ' ~ app.user.lastName}}
+
+{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead class="thead-light">
+         <tr>
+
+            <th>Code</th>
+            <th>Mouvement</th>
+            <th>Description</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for exercice in exercices %}
+            <tr>
+
+                <td>{{ exercice.code }}</td>
+                <td>{{ exercice.mouvement }}</td>
+                <td>{{ exercice.description }}</td>
+                <td>
+                    <button type="button" class="btn btn-success"> <a style="color: white" class="fa fa-eye"  href="{{ path('exercice_show', {'id': exercice.id}) }}">  </a></button>
+                    <button type="button" class="btn btn-info">   <a style="color: white" class="fa fa-wrench"  href="{{ path('exercice_edit', {'id': exercice.id}) }}"></a> </button>
+
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-primary">   <a style="color: white" href="{{ path('exercice_new') }}">Create new</a> </button>
+    <button type="button" class="btn btn-primary">   <a style="color: white" href="{{ path('exercice_pdf') }}">export PDF</a> </button>
+
+{% endblock %}

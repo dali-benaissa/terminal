@@ -1,0 +1,28 @@
+<table class="table" border="2">
+   <h1> {{app.user.firstName ~ ' ' ~ app.user.lastName}}</h1>
+
+    <thead class="thead-light">
+    <tr>
+
+        <th>Code</th>
+        <th>Mouvement</th>
+        <th>Description</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for exercice in exercices %}
+        <tr>
+            <td>{{ exercice.code }}</td>
+            <td>{{ exercice.mouvement }}</td>
+            <td>{{ exercice.description }}</td>
+
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="5">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

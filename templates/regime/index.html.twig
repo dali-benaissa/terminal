@@ -1,0 +1,50 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}
+    Welcome Back
+    {{app.user.firstName ~ ' ' ~ app.user.lastName}}
+
+{% endblock %}
+{% block body %}
+    <h1>Regime index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                 <th>AlimentsAutorises</th>
+                <th>AlimentsInterdits</th>
+                <th>PetitDejeuner</th>
+                <th>Collation1</th>
+                <th>Dejeuner</th>
+                <th>Collation2</th>
+                <th>Diner</th>
+                <th>Conseils</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for regime in regimes %}
+            <tr>
+                 <td>{{ regime.AlimentsAutorises }}</td>
+                <td>{{ regime.AlimentsInterdits }}</td>
+                <td>{{ regime.PetitDejeuner }}</td>
+                <td>{{ regime.Collation1 }}</td>
+                <td>{{ regime.Dejeuner }}</td>
+                <td>{{ regime.Collation2 }}</td>
+                <td>{{ regime.Diner }}</td>
+                <td>{{ regime.Conseils }}</td>
+                <td>
+                    <button type="button" class="btn btn-success"> <a style="color: white" class="fa fa-eye"  href="{{ path('regime_show', {'id': regime.id}) }}">  </a></button>
+                    <button type="button" class="btn btn-info">   <a style="color: white" class="fa fa-wrench"  href="{{ path('regime_edit', {'id': regime.id}) }}"></a> </button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('regime_new') }}">Create new</a>
+{% endblock %}

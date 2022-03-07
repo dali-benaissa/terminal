@@ -1,0 +1,54 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}
+    Welcome Back
+    {{app.user.firstName ~ ' ' ~ app.user.lastName}}
+
+{% endblock %}
+{% block body %}
+    <h1>Regime</h1>
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th>AlimentsAutorises</th>
+                <td>{{ regime.AlimentsAutorises }}</td>
+            </tr>
+            <tr>
+                <th>AlimentsInterdits</th>
+                <td>{{ regime.AlimentsInterdits }}</td>
+            </tr>
+            <tr>
+                <th>PetitDejeuner</th>
+                <td>{{ regime.PetitDejeuner }}</td>
+            </tr>
+            <tr>
+                <th>Collation1</th>
+                <td>{{ regime.Collation1 }}</td>
+            </tr>
+            <tr>
+                <th>Dejeuner</th>
+                <td>{{ regime.Dejeuner }}</td>
+            </tr>
+            <tr>
+                <th>Collation2</th>
+                <td>{{ regime.Collation2 }}</td>
+            </tr>
+            <tr>
+                <th>Diner</th>
+                <td>{{ regime.Diner }}</td>
+            </tr>
+            <tr>
+                <th>Conseils</th>
+                <td>{{ regime.Conseils }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button  type="button" class="btn btn-primary"><a style="color: white" href="{{ path('regime_index') }}">back to list</a> </button>
+
+    <button  type="button" class="btn btn-secondary"> <a style="color: white" href="{{ path('regime_edit', {'id': regime.id}) }}">edit</a></button>
+
+    {{ include('regime/_delete_form.html.twig') }}
+{% endblock %}
